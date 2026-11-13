@@ -1,22 +1,32 @@
-// Menu hamburguer mobile
-const hamburger = document.querySelector('.hamburger');
-const navMenu = document.querySelector('.nav-menu');
+// Interacao do formulario de contato da Nova Tech
+// O formulario abre uma conversa no WhatsApp com os dados preenchidos.
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.querySelector('.form-glass');
 
-hamburger.addEventListener('click', () => {
-  navMenu.classList.toggle('active');
-});
+  if (!form) {
+    return;
+  }
 
-// Fecha o menu quando clica em um link
-document.querySelectorAll('.nav-menu a').forEach(link => {
-  link.addEventListener('click', () => {
-    navMenu.classList.remove('active');
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const name = form.querySelector('input[type="text"]')?.value.trim() || '';
+    const email = form.querySelector('input[type="email"]')?.value.trim() || '';
+    const phone = form.querySelector('input[type="tel"]')?.value.trim() || '';
+    const project = form.querySelector('select')?.value || '';
+    const details = form.querySelector('textarea')?.value.trim() || '';
+
+    const message = [
+      'Ola! Gostaria de solicitar um orcamento pelo site Nova Tech.',
+      '',
+      'Nome: ' + name,
+      'E-mail: ' + email,
+      'WhatsApp: ' + phone,
+      'Tipo de projeto: ' + project,
+      'Descricao: ' + details
+    ].join('\n');
+
+    const whatsappUrl = 'https://wa.me/5511953782816?text=' + encodeURIComponent(message);
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
   });
-});
-
-// Validação simples do formulário
-const form = document.getElementById('contact-form');
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  alert('Mensagem enviada! Vamos entrar em contato em breve.');
-  form.reset();
 });
