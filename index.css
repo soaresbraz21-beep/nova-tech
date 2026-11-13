@@ -209,3 +209,57 @@ footer {
   nav ul { gap: 16px; font-size: 0.9rem; }
   h2 { font-size: 2rem; }
 }
+
+/* Ajustes de responsividade para telas menores */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    gap: 14px;
+    padding: 14px 16px;
+  }
+
+  nav ul {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 16px;
+  }
+
+  nav ul li a {
+    font-size: 0.85rem;
+  }
+
+  .hero {
+    padding-top: 190px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-glass {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 420px) {
+  nav ul {
+    gap: 8px 12px;
+  }
+
+  nav ul li a {
+    font-size: 0.78rem;
+  }
+
+  .hero h1 {
+    font-size: 2.1rem;
+  }
+
+  .hero-stats strong {
+    font-size: 2rem;
+  }
+
+  section {
+    padding: 90px 16px;
+  }
+}
